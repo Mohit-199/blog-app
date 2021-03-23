@@ -1,0 +1,15 @@
+<%- include("Partials/header"); -%>
+    <h1> Home </h1>
+    <p><%= homeContent %> </p>
+    <% addedBlog.forEach(function(object){ %>
+        <h1><%= object.title %></h1>
+        <p><%= object.blog.substring(0,100) + " ....." %><a href="/posts/<%= object._id %>">Read more</a> </p>
+        <form action="/delete" method="POST">
+        <button class="btn btn-primary" type="submit" name="deleteContent" value=<%= object._id  %> >Delete</button>
+        </form>
+        <form action="/update" method="POST">
+        <button class="btn btn-primary" type="submit" name="updateContent" value=<%= object._id  %> >Update</button>
+        </form>
+    <% }); %> 
+
+    <%- include("Partials/footer"); -%>
